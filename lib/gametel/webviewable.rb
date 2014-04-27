@@ -9,6 +9,7 @@ module Gametel
 
     def initialize(pform = :brazenhead)
       @platform = Gametel::Platforms::BrazenheadPlatform.new if pform == :brazenhead
+      @platform = Gametel::Platforms::CumberPlatform.new if pform == :cumber
     end
 
     #

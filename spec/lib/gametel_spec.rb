@@ -19,6 +19,12 @@ describe Gametel do
     platform.should be_instance_of ::Gametel::Platforms::BrazenheadPlatform
   end
 
+  it "should initialize the platform to Cumber when Cumber is specified" do
+    screen = GametelSampleScreen.new :cumber
+    platform = screen.instance_variable_get(:@platform)
+    platform.should be_instance_of ::Gametel::Platforms::CumberPlatform
+  end
+
   it "should add the accessors to the class when included" do
     GametelSampleScreen.should respond_to :text
     GametelSampleScreen.should respond_to :button
