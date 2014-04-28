@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.version       = Gametel::VERSION
 
   gem.add_dependency 'brazenhead', '>= 0.4.8'
+  gem.add_dependency 'cumber', '>= 1.0.7'
   gem.add_dependency 'ADB', '>= 0.5.6'
   gem.add_dependency 'page_navigation', '>= 0.9'
 

@@ -138,4 +138,19 @@ describe Gametel do
       screen.scroll_right
     end
   end
+
+  context "when using Cumber" do
+
+    let(:screen) { GametelSampleScreen.new :cumber }
+    let(:result) { double('result') }
+    let(:device) { double('device') }
+
+    it "should know when a screen has text" do
+      Cumber::Element.should_receive(:new).with(:name => "blah").and_return(result)
+      result.should_receive(:type).and_return('UIAStaticText')
+      result.should_receive(:exists?).and_return(true)
+      result.should_receive(:visible?).and_return(true)
+      screen.has_text? "blah"
+    end
+  end
 end

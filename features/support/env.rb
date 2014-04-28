@@ -28,12 +28,19 @@ Gametel.keystore = {
   :keystore_password => 'android'
 }
 
+Gametel.start_ios
 
 Before do
-  Gametel.apk_path = 'features/support/ApiDemos.apk'
-  @driver = Gametel.start('ApiDemos')
+  # Gametel.apk_path = 'features/support/ApiDemos.apk'
+  # @driver = Gametel.start('ApiDemos')
+
+  Gametel.ios_new_run('38212597e981a7f426b1f144932a59749a1d0677', 'iOSDemo')
 end
 
 After do
-  Gametel.stop
+  # Gametel.stop
+end
+
+at_exit do
+  Cumber.stop
 end

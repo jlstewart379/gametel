@@ -14,6 +14,7 @@ module Gametel
     #
     def on(cls, &block)
       @current_screen = @current_page = cls.new
+      @current_screen = @current_page = cls.new $platform unless $platform.nil?
       waiting_for  = "#{cls} to be active"
       wait_until(10, waiting_for) { @current_screen.active? } if @current_screen.respond_to?(:active?)
       block.call @current_screen if block

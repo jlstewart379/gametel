@@ -38,16 +38,28 @@ module Gametel
         raise NotImplementedError
       end
 
+      def get_view_by_name(name)
+        platform.get_view_by_name(name)
+      end
+
       def build_property_methods
         metaclass = class << self; self; end
         properties.each do |property|
           metaclass.send(:define_method, "#{property}?".to_sym) do
-            raw_view {|device| device.send "is_#{property}" }
-            platform.last_response.body == "true"
+            return_value(property)
           end
         end
       end
-      
+
+      def return_value(property)
+        if platform.instance_of?(Gametel::Platforms::BrazenheadPlatform)
+          raw_view {|device| device.send "is_#{property}" }
+          platform.last_response.body == "true"
+        else
+          #if Cumber platform
+          platform.evaluate(property, locator)
+        end
+      end
     end
   end
 end

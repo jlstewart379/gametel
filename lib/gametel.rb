@@ -41,6 +41,29 @@ module Gametel
     default_driver
   end
 
+  def self.start_ios
+    # `appdeploy install -p #{app_path} `
+    start_cumber_server
+    cumber_driver
+    $platform = :cumber #tell navigation about it
+  end
+
+  def self.start_cumber_server
+    Cumber.start
+  end
+
+  def self.cumber_driver
+    @cumber ||= Gametel::Driver.new
+  end
+
+  def self.ios_new_run(device, app)
+    Cumber.new_run(device, app)
+  end
+
+  def self.stop_ios
+    Cumber.stop
+  end
+
   def self.stop
     default_server.stop
   end
