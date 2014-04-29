@@ -36,3 +36,14 @@ task :build_demo do
   end
 end
 
+desc 'Build iOS Demo application'
+task :build_ios do
+  Dir.chdir("./iOSDemo") do
+    `xcodebuild -project iOSDemo.xcodeproj -target iOSDemo -sdk iphoneos -configuration Debug clean build 1>&2`  
+  end
+end
+
+desc 'Install iOS app on first iOS device found'
+task :ios_install do
+  `appdeploy install -p ./iOSDemo/build/Debug-iphoneos/iOSDemo.app`
+end

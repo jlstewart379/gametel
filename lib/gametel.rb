@@ -42,7 +42,6 @@ module Gametel
   end
 
   def self.start_ios
-    # `appdeploy install -p #{app_path} `
     start_cumber_server
     cumber_driver
     $platform = :cumber #tell navigation about it
