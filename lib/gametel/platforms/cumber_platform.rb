@@ -22,6 +22,12 @@ module Gametel
         Cumber::TextField.new(locator).set_value(text)
       end
 
+      def press_button(locator)
+        p locator
+        p Cumber::Button.new(locator).type
+        Cumber::Button.new(locator).tap
+      end
+
       def has_text?(text)
         element = Cumber::Element.new(:name => text)
         return false unless is_text_element?(element)

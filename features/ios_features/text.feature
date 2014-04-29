@@ -8,5 +8,9 @@ Feature: Interacting with screen elements
     Then I can see the text "iOS Demo"
 
   Scenario: Adding text to a text field
-    And I enter "Automated" into the field marked "text"
+    When I enter "Automated" into the field marked "text"
     Then I can see the text "Automated"
+
+  Scenario: Pressing a button
+    When I press the button marked "demo"
+    Then I am on the button screen
