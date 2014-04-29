@@ -14,6 +14,6 @@ When(/^I press the button marked "([^"]*)"$/) do |which|
   on(HomeScreen).send("button_#{which}")
 end
 
-Then(/^I am on the button screen$/) do
-  on(ButtonScreen).active?.should be_true
+Then(/^I am on the ios button screen$/) do
+  on(ButtonScreenIOS).active?.should be_true
 end

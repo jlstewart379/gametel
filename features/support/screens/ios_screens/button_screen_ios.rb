@@ -1,4 +1,4 @@
-class ButtonScreen
+class ButtonScreenIOS
   include Gametel
 
   text(:intro, :name => 'This is the button screen')

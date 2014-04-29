@@ -13,4 +13,4 @@ Feature: Interacting with screen elements
 
   Scenario: Pressing a button
     When I press the button marked "demo"
-    Then I am on the button screen
+    Then I am on the ios button screen

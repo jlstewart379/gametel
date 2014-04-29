@@ -3,6 +3,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../../', 'lib'))
 require 'rspec/expectations'
 require 'require_all'
 require 'gametel'
+require 'erb'
+require 'yaml'
 
 World(Gametel::Navigation)
 
@@ -28,19 +30,28 @@ Gametel.keystore = {
   :keystore_password => 'android'
 }
 
-Gametel.start_ios
+
+@config = YAML.load(ERB.new(File.read('.gametel.yml')).result)
+DEVICE = @config["device"]
+IOS = @config["ios_run"]
+
+Gametel.start_ios if IOS
 
 Before do
-  # Gametel.apk_path = 'features/support/ApiDemos.apk'
-  # @driver = Gamtel.start('ApiDemos')
-  #
-  Gametel.ios_new_run('38212597e981a7f426b1f144932a59749a1d0677', 'iOSDemo')
+
+  if IOS
+    Gametel.ios_new_run(DEVICE, 'iOSDemo')
+  else
+    Gametel.apk_path = 'features/support/ApiDemos.apk'
+    @driver = Gametel.start('ApiDemos')
+  end
+
 end
 
 After do
-  # Gametel.stop
+   Gametel.stop unless IOS
 end
 
 at_exit do
-  Cumber.stop
+  Cumber.stop if IOS
 end

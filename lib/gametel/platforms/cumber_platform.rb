@@ -23,8 +23,6 @@ module Gametel
       end
 
       def press_button(locator)
-        p locator
-        p Cumber::Button.new(locator).type
         Cumber::Button.new(locator).tap
       end
 

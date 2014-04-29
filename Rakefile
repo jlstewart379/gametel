@@ -37,7 +37,7 @@ task :build_demo do
 end
 
 desc 'Build iOS Demo application'
-task :build_ios do
+task :ios_build do
   Dir.chdir("./iOSDemo") do
     `xcodebuild -project iOSDemo.xcodeproj -target iOSDemo -sdk iphoneos -configuration Debug clean build 1>&2`  
   end
@@ -46,4 +46,21 @@ end
 desc 'Install iOS app on first iOS device found'
 task :ios_install do
   `appdeploy install -p ./iOSDemo/build/Debug-iphoneos/iOSDemo.app`
+end
+
+desc 'Deploy iOS app for testing'
+task :ios_features => [:ios_build, :ios_install,:logs_off, :ios_cukes]
+
+desc 'Turn verbose logging on'
+task :logs_on do
+  `defaults delete com.apple.dt.InstrumentsCLI UIAVerboseLogging`
+end
+
+desc 'Turn verbose logging off'
+task :logs_off do
+  `defaults write com.apple.dt.InstrumentsCLI UIAVerboseLogging -int 4096`
+end
+
+Cucumber::Rake::Task.new(:ios_cukes) do |t|
+  t.profile = 'ios'
 end

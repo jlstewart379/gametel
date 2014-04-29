@@ -1,3 +1,6 @@
 [submodule "ApiDemos"]
 	path = ApiDemos
 	url = git://github.com/leviwilson/ApiDemos.git
+[submodule "iOSDemo"]
+	path = iOSDemo
+	url = https://github.com/jlstewart379/iOSDemo.git

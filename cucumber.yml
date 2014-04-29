@@ -1,6 +1,7 @@
-<%
+<%p
 std_opts = "--no-source --color --format pretty"
 %>
 
-default: <%= std_opts %> --tags ~@ignore
+default: <%= std_opts %> --tags ~@ignore --tags ~@ios
 focus: <%= std_opts %> --tags @focus
+ios: <%= std_opts %> --tags @ios
