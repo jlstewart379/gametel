@@ -8,6 +8,9 @@ gem 'growl'
 gem 'guard-rspec'
 gem 'guard-cucumber'
 gem 'coveralls', require: false
+gem 'brazenhead', 
+     :git => '/Users/jstewart/repositories/brazenhead',
+     :branch => 'non_build'
 
 # Specify your gem's dependencies in gametel.gemspec
 gemspec
