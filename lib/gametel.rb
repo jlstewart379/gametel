@@ -36,8 +36,8 @@ module Gametel
     @default_server ||= Brazenhead::Server.new *options
   end
 
-  def self.start(activity)
-    default_server.start(activity)
+  def self.start(activity, package = nil)
+    default_server.start(activity, package)
     default_driver
   end
 
